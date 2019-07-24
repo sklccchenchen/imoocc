@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { addGun,removeGun,addGunAsync } from './index.redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// import { ReactDOM } from 'react-dom';
+
+export default class App extends React.Component {
+    render() {
+        const { num,addGun,removeGun,addGunAsync } = this.props;
+        return (
+            <div>
+                <h1>{`现在有机枪${num}把`}</h1>
+                <button onClick = {() => {addGun()}}>Add gun</button>
+                <button onClick = {() => {removeGun()}}>remove gun</button>
+                <button onClick = {() => {addGunAsync()}}>addGunAsync</button>
+            </div>
+        )
+    }
 }
-
-export default App;
+const mapStatetoProps = function(counter) {
+    return { num:counter }
+}
+const actionCreators = { addGun,removeGun,addGunAsync } 
+//  connect将state和方法注册到组件props中，在组件中直接通过this.props获得
+App = connect(mapStatetoProps,actionCreators)(App)

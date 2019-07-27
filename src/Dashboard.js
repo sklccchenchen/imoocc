@@ -17,6 +17,8 @@ export default class Dashboard extends React.Component {
         const redirectToLogin = <Redirect to='/login'></Redirect>
         const app =  (
             <div>
+                <h1>独立团</h1>
+                <button onClick={()=>{this.props.Logout()}}>注销</button>
                 <ul>
                     <li>
                         <Link to='/dashboard'>一营</Link>

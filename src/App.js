@@ -17,8 +17,8 @@ export default class App extends React.Component {
         )
     }
 }
-const mapStatetoProps = function(counter) {
-    return { num:counter }
+const mapStatetoProps = function(state) {
+    return { num:state.counter }
 }
 const actionCreators = { addGun,removeGun,addGunAsync } 
 //  connect将state和方法注册到组件props中，在组件中直接通过this.props获得
